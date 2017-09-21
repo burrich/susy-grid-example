@@ -1,0 +1,106 @@
+@import 'susy';
+@import 'plugins/svg-grid';
+
+/*
+  ==============================================================================
+  GRID
+  ==============================================================================
+*/
+
+$susy: (
+  'columns': susy-repeat(12),
+  'gutters': 0.25,
+  'spread': 'narrow',
+  'container-spread': 'narrow',
+  'svg-grid-colors': hsl(180, 50%, 80%)
+);
+
+.main-content,
+.sub-content {
+  background: susy-svg-grid() no-repeat scroll;
+}
+
+/*
+  ==============================================================================
+  GLOBAL
+  ==============================================================================
+*/
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+} 
+
+.clearfix:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+
+.container {
+  width: 1170px;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+/*
+  ==============================================================================
+  CONTENT
+  ==============================================================================
+*/
+
+header,
+.main-content,
+.sub-content {
+  margin-bottom: 10px;
+}
+
+header,
+section,
+aside,
+footer {
+  text-align: center;
+}
+
+header {
+  height: 200px;
+}
+
+.main-section {
+  float: left;
+  width: span(8);
+  margin-right: gutter();
+  // color: white;
+  // background-color: brown;
+  border: 1px solid brown;
+}
+
+aside {
+  float: left;
+  width: span(4);
+  // background-color: orange;
+  border: 1px solid orange;
+  text-align: center;
+}
+
+
+.sub-section div {
+  float: left;
+  width: span(4);
+  margin-right: gutter();
+  border: 1px solid black;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.content {
+  padding: 10px;
+}
+
+code {
+  font-size: 18px;
+}
+
