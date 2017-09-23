@@ -3,6 +3,16 @@
 
 /*
   ==============================================================================
+  COLORS
+  ==============================================================================
+*/
+
+$gray-1: hsla(0, 0%, 97%, 1);
+$gray-2: hsla(0, 0%, 93%, 1);
+$turquoise: hsl(180, 50%, 80%);
+
+/*
+  ==============================================================================
   GRID
   ==============================================================================
 */
@@ -12,12 +22,18 @@ $susy: (
   'gutters': 0.25,
   'spread': 'narrow',
   'container-spread': 'narrow',
-  'svg-grid-colors': hsl(180, 50%, 80%)
+  'svg-grid-colors': $turquoise
 );
 
 .main-content,
 .sub-content {
   background: susy-svg-grid() no-repeat scroll;
+}
+
+.clearfix:after {
+  content: " ";
+  display: table;
+  clear: both;
 }
 
 /*
@@ -26,22 +42,38 @@ $susy: (
   ==============================================================================
 */
 
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: $gray-1;
+}
+
 *,
 *:before,
 *:after {
   box-sizing: border-box;
 } 
 
-.clearfix:after {
-  content: " ";
-  display: table;
-  clear: both;
+.container {
+  // width: 1170px;
+  width: 900px;
+  height: 100%;
+  margin: 0 auto;
 }
 
-.container {
-  width: 1170px;
-  height: 100vh;
-  margin: 0 auto;
+.no-footer-wrapper {
+  min-height: 100%;
+  margin-bottom: -50px;
+}
+
+.no-footer-wrapper:after {
+  content: "";
+  display: block;
+  height: 50px;
 }
 
 /*
@@ -53,7 +85,7 @@ $susy: (
 header,
 .main-content,
 .sub-content {
-  margin-bottom: 10px;
+  margin-bottom: gutter();
 }
 
 header,
@@ -64,43 +96,60 @@ footer {
 }
 
 header {
-  height: 200px;
+  display: table;
+  width: 100%;
+  height: 150px;
+  background: $gray-2;
+
+  code {
+    display: table-cell;
+    vertical-align: middle;;
+  }
+}
+
+.main-section,
+aside {
+  padding: 120px 0;
 }
 
 .main-section {
   float: left;
   width: span(8);
   margin-right: gutter();
-  // color: white;
-  // background-color: brown;
   border: 1px solid brown;
 }
 
 aside {
   float: left;
   width: span(4);
-  // background-color: orange;
   border: 1px solid orange;
   text-align: center;
 }
-
 
 .sub-section div {
   float: left;
   width: span(4);
   margin-right: gutter();
   border: 1px solid black;
+  padding: 30px 0;
 
   &:last-child {
     margin-right: 0;
   }
 }
 
-.content {
-  padding: 10px;
-}
-
 code {
   font-size: 18px;
 }
 
+footer {
+  display: table;
+  width: 100%;
+  height: 50px;
+  background: $gray-2;
+
+  code {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
