@@ -29,10 +29,19 @@ $susy: (
 .sub-content {
   background: susy-svg-grid() no-repeat scroll;
   
-  &:after {
+  &:after { // Refactore to a clearfix mixin in a real situation
     content: " ";
     display: table;
     clear: both;
+  }
+}
+
+@mixin span($width, $gutter: false) {
+  float: left;
+  width: span($width);
+
+  @if $gutter {
+    margin-right: gutter();
   }
 }
 
@@ -114,21 +123,21 @@ aside {
 
 .main-section {
   float: left;
-  width: span(8);
+  @include span(8, true);
   margin-right: gutter();
   border: 1px solid brown;
 }
 
 aside {
   float: left;
-  width: span(4);
+  @include span(4);
   border: 1px solid orange;
   text-align: center;
 }
 
 .sub-section div {
   float: left;
-  width: span(4);
+  @include span(4, true);
   margin-right: gutter();
   border: 1px solid black;
   padding: 30px 0;
